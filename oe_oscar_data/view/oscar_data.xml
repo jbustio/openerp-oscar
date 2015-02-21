@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+	<menuitem id="oscar_data" sequence="1" parent="base.menu_custom" name="Oscar Data" />
+	
+	<!-- Group -->
+	
+	<record id="oscar_data_view_tree" model="ir.ui.view">
+        <field name="name">grocery.catalog.view.tree</field>
+        <field name="model">oscar.data</field>
+        <field name="arch" type="xml">
+            <tree string="Oscar Data" >
+            	<field name="name"/>
+            	<field name="filepath"/>
+				<button name="import_data" type="object" string="Import Data" icon="gtk-go-forward"/>
+            </tree>
+        </field>
+    </record>
+	
+	<record id="oscar_data_view_form" model="ir.ui.view">
+        <field name="name">oscar.data.view.form</field>
+        <field name="model">oscar.data</field>
+        <field name="arch" type="xml">
+            <form string="Oscar Data" version="8.0">
+            	<sheet>
+            		<group>
+						<group>
+							<field name="name"/>
+							<field name="filepath"/>
+						</group>
+					</group>
+				</sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="oscar_data_action" model="ir.actions.act_window">
+        <field name="name">Oscar Data</field>
+        <field name="res_model">oscar.data</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="oscar_data_view_tree"/>
+    </record>	
+	
+	<menuitem id="oscar_data_menu" sequence="1" parent="oscar_data" action="oscar_data_action"/>
+  
+  </data>
+</openerp>
